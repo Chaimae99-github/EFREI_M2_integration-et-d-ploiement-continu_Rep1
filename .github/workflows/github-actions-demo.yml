@@ -38,9 +38,9 @@ jobs:
           SECRET_API_TOKEN: ${{ secrets.SECRET_API_TOKEN }}
 
       - name: Exécuter le script secret
-          run: python job_secret.py
-          env:
-            SECRET_API_TOKEN: ${{ secrets.SECRET_API_TOKEN }}
+        run: python job_secret.py
+        env:
+          SECRET_API_TOKEN: ${{ secrets.SECRET_API_TOKEN }}
 
 
 # name: GitHub Actions Demo
