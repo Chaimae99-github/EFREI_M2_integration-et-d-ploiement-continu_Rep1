@@ -1,22 +1,55 @@
 name: GitHub Actions Demo
 
 on:
-  schedule:
-    - cron: '* * * * *'
-   
+  push:
 
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - run: python job.py
-      - run: echo "Bonjour depuis GitHub Actions" > resultat.txt
-      - name: Upload resultat
+      - name: Récupérer le repository
+        uses: actions/checkout@v4
+
+      - name: Exécuter le script Python
+        run: python job.py
+
+      - name: Créer un fichier
+        run: echo "Bonjour depuis GitHub Actions" > resultat.txt
+
+      - name: Upload de l'artefact
         uses: actions/upload-artifact@v4
         with:
           name: mon-resultat
           path: resultat.txt
+
+      - name: Exécuter les tests
+        run: python -m unittest test_addition.py
+
+
+# name: GitHub Actions Demo
+
+# on:
+#   schedule:
+#     - cron: '* * * * *'
+   
+
+# jobs:
+#   Explore-GitHub-Actions:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - run: python job.py
+#       - run: echo "Bonjour depuis GitHub Actions" > resultat.txt
+#       - name: Upload resultat
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: mon-resultat
+#           path: resultat.txt
+
+
+
+
 
 # name: GitHub Actions Demo
 
