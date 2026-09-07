@@ -12,8 +12,11 @@ jobs:
       - uses: actions/checkout@v4
       - run: python job.py
       - run: echo "Bonjour depuis GitHub Actions" > resultat.txt
-
-
+      - name: Upload resultat
+        uses: actions/upload-artifact@v4
+        with:
+          name: mon-resultat
+          path: resultat.txt
 
 # name: GitHub Actions Demo
 
