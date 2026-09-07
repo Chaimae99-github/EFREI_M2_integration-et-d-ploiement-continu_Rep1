@@ -47,14 +47,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y sshpass
 
+      - name: Ajouter le serveur SSH aux known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 20.56.74.49 >> ~/.ssh/known_hosts
 
       - name: Copier addition.py sur le serveur
         env:
           SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
         run: |
           sshpass -p "$SSH_PASSWORD" scp addition.py ubuntu@20.56.74.49:/home/ubuntu/ChaimaeHAJJI
-
-
 
 
 
