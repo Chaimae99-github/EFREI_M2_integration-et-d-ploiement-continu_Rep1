@@ -58,10 +58,11 @@ jobs:
         run: |
           sshpass -p "$SSH_PASSWORD" scp addition.py ubuntu@20.56.74.49:/home/ubuntu/ChaimaeHAJJI
 
+      - name: Récupérer le code
+        uses: actions/checkout@v4
 
-
-
-
+      - name: Construire l'image Docker
+        run: docker build -t addition-app .
 
 
 
